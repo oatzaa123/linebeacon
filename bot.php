@@ -10,7 +10,7 @@ $POST_HEADER = array('Content-Type: application/json', 'Authorization: Bearer ' 
 
 $request = file_get_contents('php://input');   // Get request content
 $request_array = json_decode($request, true);   // Decode JSON to Array
-
+var_export($request_array);
 
 
 if ( sizeof($request_array['events']) > 0 ) {
@@ -23,8 +23,8 @@ if ( sizeof($request_array['events']) > 0 ) {
         $text = 'test';
         $data = [
             'replyToken' => $reply_token,
-            // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
-            'messages' => [['type' => 'text', 'text' => $text ]]
+            'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]  Debug Detail message
+            //'messages' => [['type' => 'text', 'text' => $text ]]
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
